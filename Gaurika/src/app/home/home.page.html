@@ -12,10 +12,8 @@
     </ion-buttons>
     <ion-buttons slot="end">
       <!-- Only show template toggle on templates page -->
-      <ion-button *ngIf="showTemplatesPage" 
-                  (click)="toggleTemplates()" 
-                  class="template-toggle"
-                  [title]="isTemplateToggleEnabled ? 'Hide Templates' : 'Show Templates'">
+      <ion-button *ngIf="showTemplatesPage" (click)="toggleTemplates()" class="template-toggle"
+        [title]="isTemplateToggleEnabled ? 'Hide Templates' : 'Show Templates'">
         <!-- Reversed icons -->
         <ion-icon [name]="isTemplateToggleEnabled ? 'apps-outline' : 'grid'"></ion-icon>
       </ion-button>
@@ -33,11 +31,11 @@
         Code Snippets & Actions
       </h2>
       <ion-button class="close-button" (click)="toggleRightSidebar()">
-        <ion-icon name="arrow-forward-outline"></ion-icon> 
+        <ion-icon name="arrow-forward-outline"></ion-icon>
       </ion-button>
     </div>
     <div class="code-snippet-container" *ngIf="selectedCodeSnippet">
-      <pre><code>{{ selectedCodeSnippet }}</code></pre> 
+      <pre><code>{{ selectedCodeSnippet }}</code></pre>
       <ion-button class="copy-button" fill="clear" size="small" (click)="copyCode(selectedCodeSnippet)">
         <ion-icon name="copy-outline" class="mr-1"></ion-icon>
         <span class="copy-text">{{ isCopied ? 'Copied!' : 'Copy' }}</span>
@@ -46,9 +44,7 @@
   </div>
 
   <!-- Left Sidebar -->
-  <div class="sidebar" [class.open]="isSidebarOpen"
-       (touchstart)="onTouchStart($event)"
-       (touchend)="onTouchEnd($event)">
+  <div class="sidebar" [class.open]="isSidebarOpen">
     <div class="sidebar-header">
       <h2>
         <ion-icon name="chatbubbles-outline" class="mr-2"></ion-icon>
@@ -59,12 +55,11 @@
       </ion-button>
     </div>
     <div class="session-list">
-      <ion-item *ngFor="let session of sessions; let i = index" 
-    (click)="editingSessionIndex === null && switchSession(i)"
-    [class.active-session]="i === currentSessionIndex"
-    [class.editing-session]="editingSessionIndex === i">
+      <ion-item *ngFor="let session of sessions; let i = index"
+        (click)="editingSessionIndex === null && switchSession(i)" [class.active-session]="i === currentSessionIndex"
+        [class.editing-session]="editingSessionIndex === i">
         <ion-icon name="chatbox-outline" class="mr-2"></ion-icon>
-        
+
         <!-- Title display/edit mode -->
         <ng-container *ngIf="editingSessionIndex !== i">
           {{ session.name }}
@@ -80,12 +75,8 @@
 
         <!-- Edit mode -->
         <ng-container *ngIf="editingSessionIndex === i">
-          <ion-input 
-            [(ngModel)]="editedSessionName"
-            (keyup.enter)="saveSessionName(i, $event)"
-            (keyup.escape)="cancelEditingSession()"
-            #titleInput
-            (click)="$event.stopPropagation()">
+          <ion-input [(ngModel)]="editedSessionName" (keyup.enter)="saveSessionName(i, $event)"
+            (keyup.escape)="cancelEditingSession()" #titleInput (click)="$event.stopPropagation()">
           </ion-input>
           <ion-buttons slot="end">
             <ion-button fill="clear" color="success" (click)="saveSessionName(i, $event)">
@@ -107,9 +98,8 @@
   </div>
 </ion-header>
 
-<ion-content [fullscreen]="true" [class.content-shift]="true" 
-  [class.sidebar-open]="isSidebarOpen" 
-  [class.right-sidebar-open]="isRightSidebarOpen">
+<ion-content [fullscreen]="true" [class.content-shift]="true" [class.sidebar-open]="isSidebarOpen"
+  [class.right-sidebar-open]="isRightSidebarOpen" (click)="closeSidebar()">
   <div class="content-container">
     <div *ngIf="showTemplatesPage" class="landing-page" [class.minimal]="!isTemplateToggleEnabled">
       <!-- Add loading optimization -->
@@ -117,14 +107,10 @@
       <div class="hero-section" [class.minimal]="!isTemplateToggleEnabled" loading="lazy">
         <div class="hero-content" [class.centered]="!isTemplateToggleEnabled">
           <div class="brand-logo">
-            <img src="../../assets/icon/favicon.png" 
-                 alt="Gaurika Logo"
-                 loading="lazy"
-                 width="80"
-                 height="80"
-                 decoding="async">
+            <img src="../../assets/icon/favicon.png" alt="Gaurika Logo" loading="lazy" width="80" height="80"
+              decoding="async">
           </div>
-          
+
           <!-- Simplified title without hover effect -->
           <h1 class="hero-title">
             <span class="title">Gaurika</span>
@@ -174,10 +160,8 @@
         </div>
 
         <div class="category-tabs">
-          <button *ngFor="let cat of categories"
-                  class="category-tab"
-                  [class.active]="selectedCategory === cat.id"
-                  (click)="setCategory(cat.id)">
+          <button *ngFor="let cat of categories" class="category-tab" [class.active]="selectedCategory === cat.id"
+            (click)="setCategory(cat.id)">
             <ion-icon [name]="cat.icon"></ion-icon>
             <span>{{ cat.name }}</span>
             <div class="category-indicator"></div>
@@ -185,10 +169,8 @@
         </div>
 
         <div class="templates-grid">
-          <div *ngFor="let template of filteredTemplates; trackBy: trackByTemplateId" 
-               class="template-card" 
-               [class.featured]="template.category === selectedCategory"
-               (click)="startConversation(template)">
+          <div *ngFor="let template of filteredTemplates; trackBy: trackByTemplateId" class="template-card"
+            [class.featured]="template.category === selectedCategory" (click)="startConversation(template)">
             <div class="template-icon">
               <ion-icon [name]="getIconForTemplate(template.name)"></ion-icon>
             </div>
@@ -210,14 +192,13 @@
       <!-- Replace the existing templates section when in minimal mode -->
       <div *ngIf="showTemplatesPage && !isTemplateToggleEnabled" class="minimal-mode">
         <div class="suggestions-grid">
-          <div class="suggestion-card" 
-               *ngFor="let suggestion of minimalSuggestions"
-               (click)="handleMinimalSuggestion(suggestion.text)">
+          <div class="suggestion-card" *ngFor="let suggestion of minimalSuggestions"
+            (click)="handleMinimalSuggestion(suggestion.text)">
             <ion-icon [name]="suggestion.icon"></ion-icon>
             <span>{{ suggestion.text }}</span>
           </div>
         </div>
-        
+
         <div class="quick-start">
           <button class="start-button" (click)="startQuickChat()">
             Start a New Chat
@@ -231,11 +212,12 @@
       <ion-list lines="none">
         <ion-item *ngFor="let message of messages; let i = index">
           <ion-label [class.user-message]="message.role === 'user'"
-                    [class.assistant-message]="message.role === 'assistant'">
-                    <span class="message-sender">
-                      <ion-icon [name]="message.role === 'user' ? 'person-circle-outline' : 'desktop-outline'" class="mr-2"></ion-icon>
-                      {{ message.role === 'user' ? 'You' : 'Gaurika' }} -> 
-                    </span>
+            [class.assistant-message]="message.role === 'assistant'">
+            <span class="message-sender">
+              <ion-icon [name]="message.role === 'user' ? 'person-circle-outline' : 'desktop-outline'"
+                class="mr-2"></ion-icon>
+              {{ message.role === 'user' ? 'You' : 'Gaurika' }} ->
+            </span>
 
             <!-- Assistant Message Content -->
             <div *ngIf="message.role === 'assistant'" class="message-content">
@@ -245,16 +227,15 @@
               <ng-container *ngIf="message.content.includes('```')">
                 <ng-container *ngFor="let part of splitMessageContent(message.content)">
                   <div *ngIf="part.type === 'text'" [innerHTML]="renderMarkdown(part.content)"></div>
-                  <div *ngIf="part.type === 'code'" class="view-file-button" (click)="showCodeSnippet(part.content, part.language)">
+                  <div *ngIf="part.type === 'code'" class="view-file-button"
+                    (click)="showCodeSnippet(part.content, part.language)">
                     <ion-icon name="code-slash-outline" class="mr-2"></ion-icon>
                     <span>View - {{ part.language || 'Code' }}</span>
                   </div>
                 </ng-container>
               </ng-container>
               <div *ngIf="message.generatedImages?.length" class="generated-images">
-                <img *ngFor="let image of message.generatedImages" 
-                     [src]="image" 
-                     class="generated-image" />
+                <img *ngFor="let image of message.generatedImages" [src]="image" class="generated-image" />
               </div>
             </div>
 
@@ -262,12 +243,9 @@
             <div *ngIf="message.role === 'user'" class="message-content">
               <!-- Edit mode -->
               <div *ngIf="editingUserMessageIndex === i" class="edit-message-container">
-                <ion-textarea
-                  [(ngModel)]="editingUserMessageContent"
-                  auto-grow="true"
-                  class="edit-message-input">
+                <ion-textarea [(ngModel)]="editingUserMessageContent" auto-grow="true" class="edit-message-input">
                 </ion-textarea>
-                
+
                 <!-- Show current attachments -->
                 <div *ngIf="selectedImage || selectedFile" class="edit-attachments">
                   <div *ngIf="selectedImage" class="image-preview">
@@ -284,7 +262,7 @@
                     </ion-button>
                   </div>
                 </div>
-              
+
                 <div class="edit-actions">
                   <ion-button fill="clear" (click)="triggerFileUpload()">
                     <ion-icon name="attach-outline"></ion-icon>
@@ -297,25 +275,21 @@
                   </ion-button>
                 </div>
               </div>
-              
+
               <!-- Display mode -->
               <div *ngIf="editingUserMessageIndex !== i">
                 <div [innerHTML]="renderMarkdown(getDisplayContent(message.content))"></div>
                 <!-- Add this section to display user images -->
                 <div *ngIf="message.image" class="user-image-container">
-                  <img [src]="message.image" 
-                       class="user-sent-image" 
-                       alt="User sent image"
-                       (click)="showImagePreview(message.image)" 
-                       loading="lazy" />
+                  <img [src]="message.image" class="user-sent-image" alt="User sent image"
+                    (click)="showImagePreview(message.image)" loading="lazy" />
                 </div>
                 <!-- Rest of existing user message content -->
               </div>
-            
+
               <!-- Remove condition to show options for all messages -->
-              <button class="toggle-actions" 
-                      (click)="toggleMessageActions(i, message.role)"
-                      *ngIf="message.role === 'user' || message.role === 'assistant'">
+              <button class="toggle-actions" (click)="toggleMessageActions(i, message.role)"
+                *ngIf="message.role === 'user' || message.role === 'assistant'">
                 <ion-icon name="ellipsis-vertical"></ion-icon>
               </button>
             </div>
@@ -329,44 +303,30 @@
               <div class="message-actions-wrapper">
                 <!-- For user messages -->
                 <div *ngIf="message.role === 'user'" class="message-actions-wrapper">
-                  <button class="action-button" 
-                          (click)="copyMessageToClipboard(message.content)" 
-                          title="Copy">
+                  <button class="action-button" (click)="copyMessageToClipboard(message.content)" title="Copy">
                     <ion-icon name="copy-outline"></ion-icon>
                   </button>
-                  <button class="action-button" 
-                          *ngIf="isLatestUserMessage(i)"
-                          (click)="startEditUserMessage(i)" 
-                          title="Edit">
+                  <button class="action-button" *ngIf="isLatestUserMessage(i)" (click)="startEditUserMessage(i)"
+                    title="Edit">
                     <ion-icon name="create-outline"></ion-icon>
                   </button>
-                  <button class="action-button delete" 
-                          (click)="deleteMessage(i)" 
-                          title="Delete">
+                  <button class="action-button delete" (click)="deleteMessage(i)" title="Delete">
                     <ion-icon name="trash-outline"></ion-icon>
                   </button>
                 </div>
 
                 <!-- For assistant messages -->
                 <div *ngIf="message.role === 'assistant'" class="message-actions-wrapper">
-                  <button class="action-button" 
-                          (click)="copyMessageToClipboard(message.content)" 
-                          title="Copy">
+                  <button class="action-button" (click)="copyMessageToClipboard(message.content)" title="Copy">
                     <ion-icon name="copy-outline"></ion-icon>
                   </button>
-                  <button class="action-button" 
-                          (click)="startEditMessage(i)" 
-                          title="Refine">
-                    <ion-icon name="sparkles-outline"></ion-icon>  <!-- Changed from create-outline to star-outline -->
+                  <button class="action-button" (click)="startEditMessage(i)" title="Refine">
+                    <ion-icon name="sparkles-outline"></ion-icon> <!-- Changed from create-outline to star-outline -->
                   </button>
-                  <button class="action-button" 
-                          (click)="redoAssistantMessage(i)" 
-                          title="Regenerate">
+                  <button class="action-button" (click)="redoAssistantMessage(i)" title="Regenerate">
                     <ion-icon name="refresh-outline"></ion-icon>
                   </button>
-                  <button class="action-button delete" 
-                          (click)="deleteMessage(i)" 
-                          title="Delete">
+                  <button class="action-button delete" (click)="deleteMessage(i)" title="Delete">
                     <ion-icon name="trash-outline"></ion-icon>
                   </button>
                 </div>
@@ -376,10 +336,9 @@
         </ion-item>
 
         <!-- Writing Indicator -->
-        <div class="brand-logo-bottom" 
-        [class.spinning]="isStreaming"  *ngIf="getFilteredMessages().length > 0">
-     <img src="../../assets/icon/favicon.png" alt="Gaurika Logo">
-   </div>
+        <div class="brand-logo-bottom" [class.spinning]="isStreaming" *ngIf="getFilteredMessages().length > 0">
+          <img src="../../assets/icon/favicon.png" alt="Gaurika Logo">
+        </div>
       </ion-list>
     </div>
 
@@ -392,36 +351,22 @@
 </ion-content>
 
 <!-- Move input type="file" here -->
-<input type="file" 
-       #fileInput 
-       (change)="onFileSelected($event)" 
-       style="display: none" />
+<input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" />
 
 <!-- Bottom Input Bar -->
 <div class="bottom-bar">
   <div class="bottom-toolbar">
-    <ion-textarea #messageInput
-               [(ngModel)]="userInput"
-               placeholder="Send a message..."
-               (keydown)="handleKeyDown($event)"
-               (paste)="handlePaste($event, 'user')"
-               [disabled]="isInputDisabled()"
-               [autoGrow]="true"
-               [rows]="1"
-               class="message-input"
-               inputmode="text"
-               enterkeyhint="enter">
+    <ion-textarea #messageInput [(ngModel)]="userInput" placeholder="Send a message..."
+      (keydown)="handleKeyDown($event)" (paste)="handlePaste($event, 'user')" [disabled]="isInputDisabled()"
+      [autoGrow]="true" [rows]="1" class="message-input" inputmode="text" enterkeyhint="enter">
       <ion-icon name="chatbox-outline" slot="start" class="input-icon"></ion-icon>
     </ion-textarea>
-    
+
     <div class="action-buttons-group">
-      <ion-button class="upload-button" 
-                  (click)="triggerFileUpload()" 
-                  [disabled]="isInputDisabled()">
+      <ion-button class="upload-button" (click)="triggerFileUpload()" [disabled]="isInputDisabled()">
         <ion-icon name="attach-outline"></ion-icon>
       </ion-button>
-      <ion-button class="send-button" 
-                  (click)="isStreaming ? stopStream() : sendMessage()">
+      <ion-button class="send-button" (click)="isStreaming ? stopStream() : sendMessage()">
         <ion-icon [name]="isStreaming ? 'stop-outline' : 'paper-plane-outline'"></ion-icon>
       </ion-button>
     </div>
@@ -456,19 +401,15 @@
       Get a refined response
     </h2>
   </div>
-  
+
   <div class="message-being-edited">
     {{ messages[selectedAssistantMessageIndex].content }}
   </div>
-  
+
   <ion-item>
     <ion-label position="stacked">How should I modify this response?</ion-label>
-    <ion-input 
-      [(ngModel)]="editMessageInput" 
-      placeholder="Describe your desired changes..."
-      (keydown)="handleKeyDown($event)"
-      (paste)="handlePaste($event, 'refine')"
-      autofocus>
+    <ion-input [(ngModel)]="editMessageInput" placeholder="Describe your desired changes..."
+      (keydown)="handleKeyDown($event)" (paste)="handlePaste($event, 'refine')" autofocus>
     </ion-input>
   </ion-item>
 
@@ -485,16 +426,12 @@
 </div>
 
 <!-- Assistant Message Options -->
-<ion-action-sheet
-  [isOpen]="isAssistantMessageOptionsOpen"
-  (didDismiss)="isAssistantMessageOptionsOpen = false"
+<ion-action-sheet [isOpen]="isAssistantMessageOptionsOpen" (didDismiss)="isAssistantMessageOptionsOpen = false"
   [buttons]="actionSheetButtons">
 </ion-action-sheet>
 
 <!-- User Message Options Action Sheet -->
-<ion-action-sheet
-  [isOpen]="isUserMessageOptionsOpen"
-  (didDismiss)="isUserMessageOptionsOpen = false"
+<ion-action-sheet [isOpen]="isUserMessageOptionsOpen" (didDismiss)="isUserMessageOptionsOpen = false"
   [buttons]="userActionSheetButtons">
 </ion-action-sheet>
 

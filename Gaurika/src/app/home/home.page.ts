@@ -1088,18 +1088,18 @@ export class HomePage implements OnInit {
     }
   }
   
-  @HostListener('document:mousemove', ['$event']) 
-  onMouseMove(event: MouseEvent) {
-    if (window.innerWidth > 768) { // Only apply hover effect on desktop
-      const sidebarWidth = 300; // Adjust if your sidebar width is different
-      this.isSidebarHovered = event.clientX <= sidebarWidth;
+  // @HostListener('document:mousemove', ['$event']) 
+  // onMouseMove(event: MouseEvent) {
+  //   if (window.innerWidth > 768) { // Only apply hover effect on desktop
+  //     const sidebarWidth = 300; // Adjust if your sidebar width is different
+  //     this.isSidebarHovered = event.clientX <= sidebarWidth;
 
-      // Open sidebar on hover only if not manually opened
-      if (!this.isSidebarManuallyOpened) {
-        this.isSidebarOpen = this.isSidebarHovered; 
-      }
-    }
-  }
+  //     // Open sidebar on hover only if not manually opened
+  //     if (!this.isSidebarManuallyOpened) {
+  //       this.isSidebarOpen = this.isSidebarHovered; 
+  //     }
+  //   }
+  // }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -2285,15 +2285,22 @@ async copyCode(code: string) {
   touchStartX: number = 0;
   touchEndX: number = 0;
 
-  @HostListener('touchstart', ['$event'])
-  onTouchStart(event: TouchEvent) {
-    this.touchStartX = event.changedTouches[0].screenX;
-  }
+  // @HostListener('touchstart', ['$event'])
+  // onTouchStart(event: TouchEvent) {
+  //   this.touchStartX = event.changedTouches[0].screenX;
+  // }
 
-  @HostListener('touchend', ['$event'])
-  onTouchEnd(event: TouchEvent) {
-    this.touchEndX = event.changedTouches[0].screenX;
-    this.handleGesture();
+  // @HostListener('touchend', ['$event'])
+  // onTouchEnd(event: TouchEvent) {
+  //   this.touchEndX = event.changedTouches[0].screenX;
+  //   this.handleGesture();
+  // }
+
+  closeSidebar() {
+    if (this.isSidebarOpen) {
+      this.isSidebarOpen = false;
+      this.isSidebarManuallyOpened = this.isSidebarOpen;
+    }
   }
 
   handleGesture() {
