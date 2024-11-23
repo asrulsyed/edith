@@ -1106,6 +1106,13 @@ export class HomePage implements OnInit {
     this.isSidebarManuallyOpened = this.isSidebarOpen; // Update manual open status
   }
 
+  closeSidebar() {
+    if (this.isSidebarOpen) {
+      this.isSidebarOpen = false;
+      this.isSidebarManuallyOpened = this.isSidebarOpen;
+    }
+  }
+
   extractCodeFromLine(line: string): string {
     const codeStartIndex = line.indexOf('```');
     if (codeStartIndex > -1) {
@@ -2285,22 +2292,15 @@ async copyCode(code: string) {
   touchStartX: number = 0;
   touchEndX: number = 0;
 
-  // @HostListener('touchstart', ['$event'])
-  // onTouchStart(event: TouchEvent) {
-  //   this.touchStartX = event.changedTouches[0].screenX;
-  // }
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
 
-  // @HostListener('touchend', ['$event'])
-  // onTouchEnd(event: TouchEvent) {
-  //   this.touchEndX = event.changedTouches[0].screenX;
-  //   this.handleGesture();
-  // }
-
-  closeSidebar() {
-    if (this.isSidebarOpen) {
-      this.isSidebarOpen = false;
-      this.isSidebarManuallyOpened = this.isSidebarOpen;
-    }
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleGesture();
   }
 
   handleGesture() {

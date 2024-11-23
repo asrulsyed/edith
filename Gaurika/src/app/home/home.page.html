@@ -44,7 +44,7 @@
   </div>
 
   <!-- Left Sidebar -->
-  <div class="sidebar" [class.open]="isSidebarOpen">
+  <div class="sidebar" [class.open]="isSidebarOpen" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
     <div class="sidebar-header">
       <h2>
         <ion-icon name="chatbubbles-outline" class="mr-2"></ion-icon>
