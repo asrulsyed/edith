@@ -43,7 +43,7 @@ export class SettingsService {
       // API Providers
       const defaultApiProviderExists = (await this.storage.get('apiProviders'))?.some((provider: ApiProvider) => provider.name === 'Cerebras + proxy');
       if (!defaultApiProviderExists) {
-        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: `http://localhost:3000/api/cerebras/v1/` }]);
+        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: `https://proxy.edith.vercel.app/api/cerebras/v1/` }]);
       }
 
       // Models
