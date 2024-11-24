@@ -38,13 +38,13 @@ export class SettingsService {
       // API Keys
       const defaultApiKeyExists = (await this.storage.get('apiKeys'))?.some((key: ApiKey) => key.name === 'Default API Key');
       if (!defaultApiKeyExists) {
-        await this.storage.set('apiKeys', [{ name: 'Default API Key', key: environment.API_KEY }]);
+        await this.storage.set('apiKeys', [{ name: 'Default API Key', key: 'csk-242evhm943wpr5xj23rk8k4cj8xddmjjm6tv4epr8rxkmyp4' }]);
       }
 
       // API Providers
       const defaultApiProviderExists = (await this.storage.get('apiProviders'))?.some((provider: ApiProvider) => provider.name === 'Cerebras + proxy');
       if (!defaultApiProviderExists) {
-        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: environment.BASE_URL }]);
+        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: 'https://api.cerebras.ai/v1/' }]);
       }
 
       // Models

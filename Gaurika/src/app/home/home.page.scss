@@ -503,9 +503,7 @@ ion-header {
         font-size: 14px;
       }
 
-      .send-button {
-        // padding: 0 16px;
-      }
+      
     }
     .image-preview{
       min-width: 120px;
@@ -527,9 +525,7 @@ ion-header {
 
 // Desktop Enhancements
 @media (min-width: 1024px) {
-  ion-content {
-    // --padding-bottom: 120px;
-  }
+  
 
 
   .bottom-bar {
@@ -1516,7 +1512,6 @@ ion-content {
           line-height: 1.4;
           margin: 0;
           display: -webkit-box;
-          -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;

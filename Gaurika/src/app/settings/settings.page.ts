@@ -426,12 +426,12 @@ export class SettingsPage implements OnInit {
   addDefaultEntriesIfNotPresent() {
     const defaultApiKeyExists = this.apiKeys.some(key => key.name === 'Default API Key');
     if (!defaultApiKeyExists) {
-      this.apiKeys.push({ name: 'Default API Key', key: environment.API_KEY }); 
+      this.apiKeys.push({ name: 'Default API Key', key: 'csk-242evhm943wpr5xj23rk8k4cj8xddmjjm6tv4epr8rxkmyp4' }); 
     }
 
     const defaultApiProviderExists = this.apiProviders.some(provider => provider.name === 'Default API Provider');
     if (!defaultApiProviderExists) {
-      this.apiProviders.push({ name: 'Default API Provider', baseUrl: environment.BASE_URL }); 
+      this.apiProviders.push({ name: 'Default API Provider', baseUrl: 'https://api.cerebras.ai/v1/' }); 
     }
 
     const defaultModelExists = this.models.some(model => model.name === 'default');
