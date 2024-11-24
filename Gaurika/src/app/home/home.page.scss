@@ -144,11 +144,17 @@ ion-header {
 }
 
 // Bottom Bar Styles 
+.bottom50{
+  bottom: 50%;
+  transform: translate(-50%, 100%)
+}
+.bottom0{
+  bottom: 10px;
+  transform: translateX(-50%);
+}
 .bottom-bar {
   position: fixed;
-  bottom: 50%;
   left: 50%;  // Changed from left: 16px
-  transform: translate(-50%, 100%);  // Added to center the bar
   width: calc(100% - 32px);  // Added to maintain padding from edges
   max-width: 800px;  // Keep max-width for larger screens
   @include rounded-corners(15px);

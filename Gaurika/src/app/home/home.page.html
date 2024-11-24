@@ -267,7 +267,7 @@
 <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" />
 
 <!-- Bottom Input Bar -->
-<div [ngClass]="messages.length > 0 ? 'bottom-bar' : ''">
+<div [ngClass]="messages.length > 0 ? 'bottom0' : 'bottom50' " class="bottom-bar">
   <div class="bottom-toolbar">
     <ion-textarea #messageInput [(ngModel)]="userInput" placeholder="Send a message..."
       (keydown)="handleKeyDown($event)" (paste)="handlePaste($event, 'user')" [disabled]="isInputDisabled()"
