@@ -43,7 +43,7 @@ export class SettingsService {
       // API Providers
       const defaultApiProviderExists = (await this.storage.get('apiProviders'))?.some((provider: ApiProvider) => provider.name === 'Cerebras + proxy');
       if (!defaultApiProviderExists) {
-        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: 'https://proxy.gaurish.xyz/api/cerebras/v1/' }]);
+        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: `${process.env['BACKEND_URL']}api/cerebras/v1/` }]);
       }
 
       // Models
