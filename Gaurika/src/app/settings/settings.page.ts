@@ -8,6 +8,7 @@ import { AddApiKeyModalComponent } from '../add-api-key-modal/add-api-key-modal.
 import { AddApiProviderModalComponent } from '../add-api-provider-modal/add-api-provider-modal.component';
 import { AddModelModalComponent } from '../add-model-modal/add-model-modal.component';
 import { SettingsService } from '../services/settings.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-settings',
@@ -425,12 +426,12 @@ export class SettingsPage implements OnInit {
   addDefaultEntriesIfNotPresent() {
     const defaultApiKeyExists = this.apiKeys.some(key => key.name === 'Default API Key');
     if (!defaultApiKeyExists) {
-      this.apiKeys.push({ name: 'Default API Key', key: '' }); 
+      this.apiKeys.push({ name: 'Default API Key', key: environment.API_KEY }); 
     }
 
     const defaultApiProviderExists = this.apiProviders.some(provider => provider.name === 'Default API Provider');
     if (!defaultApiProviderExists) {
-      this.apiProviders.push({ name: 'Default API Provider', baseUrl: `https://proxy.edith.vercel.app/api/cerebras/v1/` }); 
+      this.apiProviders.push({ name: 'Default API Provider', baseUrl: environment.BASE_URL }); 
     }
 
     const defaultModelExists = this.models.some(model => model.name === 'default');

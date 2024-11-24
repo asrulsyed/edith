@@ -21,6 +21,11 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               {
+                "glob": ".env",
+                "input": "./",
+                "output": "./"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"

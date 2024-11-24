@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 // Interface for API Key objects
 interface ApiKey {
@@ -37,13 +38,13 @@ export class SettingsService {
       // API Keys
       const defaultApiKeyExists = (await this.storage.get('apiKeys'))?.some((key: ApiKey) => key.name === 'Default API Key');
       if (!defaultApiKeyExists) {
-        await this.storage.set('apiKeys', [{ name: 'Default API Key', key: '123' }]);
+        await this.storage.set('apiKeys', [{ name: 'Default API Key', key: environment.API_KEY }]);
       }
 
       // API Providers
       const defaultApiProviderExists = (await this.storage.get('apiProviders'))?.some((provider: ApiProvider) => provider.name === 'Cerebras + proxy');
       if (!defaultApiProviderExists) {
-        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: `https://proxy.edith.vercel.app/api/cerebras/v1/` }]);
+        await this.storage.set('apiProviders', [{ name: 'Cerebras + proxy', baseUrl: environment.BASE_URL }]);
       }
 
       // Models

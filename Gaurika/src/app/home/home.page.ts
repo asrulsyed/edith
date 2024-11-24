@@ -28,7 +28,7 @@ import xml from 'highlight.js/lib/languages/xml';
 import css from 'highlight.js/lib/languages/css';
 import json from 'highlight.js/lib/languages/json';
 import MarkdownIt from 'markdown-it';
-
+import dotenv from 'dotenv'
 
 
 interface Message {
@@ -1449,6 +1449,7 @@ export class HomePage implements OnInit {
   
 
   async sendMessage(isRedo: boolean = false) {
+    
     if (!this.client) {
       await this.initializeOpenAIClient();
       if (!this.client) {
@@ -1459,7 +1460,7 @@ export class HomePage implements OnInit {
 
     const messageContent = this.userInput.trim();
     if (!isRedo && messageContent === '' && !this.selectedFile && !this.selectedImage) return;
-
+    
     // If starting a new conversation (no current session) or from templates, create a new session
     if (this.currentSessionIndex === -1 || this.showTemplatesPage || this.sessions.length === 0) {
       await this.createNewSessionFromMessage(messageContent);
