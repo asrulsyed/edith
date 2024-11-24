@@ -1457,8 +1457,6 @@ export class HomePage implements OnInit {
       }
     }
 
-    console.log(this.storage.get('baseUrl'))
-
     const messageContent = this.userInput.trim();
     if (!isRedo && messageContent === '' && !this.selectedFile && !this.selectedImage) return;
 
