@@ -65,7 +65,7 @@ export class SettingsService {
       // System Prompt
       const storedSystemPrompt = await this.storage.get('systemPrompt');
       if (!storedSystemPrompt) {
-        await this.storage.set('systemPrompt', 'You are a helpful assistant named Gaurika, Made by Gaurish Mehra.. You are much more than a simple llm, the default model is llama3.1-70b, but the user may change it.');
+        await this.storage.set('systemPrompt', 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.');
       }
 
       // Other Settings (Initialize if not present)

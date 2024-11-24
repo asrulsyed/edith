@@ -1,7 +1,7 @@
 // Native-Inspired Dark Color Palette with Enhanced Aesthetics (Mature)
 $background-dark: #111827; 
-$background-light: #202020;
-$primary-color: #8a8a8a; 
+$background-light: #1f2937;
+$primary-color: #646cff; 
 $secondary-color: #646cff; 
 $accent-color: #b0b0b0; 
 $text-color: #f8f8f8; 
@@ -95,7 +95,6 @@ body {
 
 ion-content {
   --ion-background-color: #{$background-dark};
-  --padding-bottom: 100px;
   overflow-x: hidden;
 }
 
@@ -147,9 +146,9 @@ ion-header {
 // Bottom Bar Styles 
 .bottom-bar {
   position: fixed;
-  bottom: 5px;
+  bottom: 50%;
   left: 50%;  // Changed from left: 16px
-  transform: translateX(-50%);  // Added to center the bar
+  transform: translate(-50%, 100%);  // Added to center the bar
   width: calc(100% - 32px);  // Added to maintain padding from edges
   max-width: 800px;  // Keep max-width for larger screens
   @include rounded-corners(15px);
@@ -227,6 +226,7 @@ ion-header {
 
         ion-icon {
           font-size: 18px;
+          color: #22c55e ;
           margin: 0;
         }
 
@@ -484,7 +484,7 @@ ion-header {
 @media (max-width: 576px) {
   .bottom-bar {
     left: 50%;
-    right: auto;
+    margin: 5px 0;
     transform: translateX(-50%);
     width: calc(100%); // Slightly reduced padding for mobile
     max-width: calc(100%);
@@ -522,7 +522,7 @@ ion-header {
 // Desktop Enhancements
 @media (min-width: 1024px) {
   ion-content {
-    --padding-bottom: 120px;
+    // --padding-bottom: 120px;
   }
 
 
@@ -713,14 +713,16 @@ pre {
       --padding-end: 16px;
       transition: all 0.3s ease;
       font-size: 0.9rem;
+      color: white;
 
       &.active-session {
-        --background: rgba($secondary-color, 0.2);
+        --background: #0f223d;
         border-left: 3px solid $secondary-color;
         
         ion-label {
           font-weight: 600;
-          color: lighten($text-color, 10%);
+          color: white;
+          // color: lighten($text-color, 10%);
         }
       }
 
@@ -1077,10 +1079,10 @@ ion-buttons {
 .landing-page {
   color: $text-color;
   background-color: $background-dark;
-  min-height: 100vh;
+  // min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: stretch;
   overflow-x: hidden;
 
   ion-searchbar {
@@ -1109,6 +1111,7 @@ ion-buttons {
 }
 
 .hero-section {
+  height: calc(100vh - 56px);
   padding: 3rem 2rem;
   background: linear-gradient(
     135deg,
@@ -1119,6 +1122,7 @@ ion-buttons {
   animation: gradientAnimation 15s ease-in-out infinite;
   will-change: background-position;
   transform: translateZ(0); // Force GPU acceleration
+  // min-height: 90vh;
 
   .hero-content {
     max-width: 800px;
@@ -2011,16 +2015,16 @@ ion-label {
 .landing-page {
   color: $text-color;
   background: $background-dark;
-  min-height: 100vh;
+  // min-height: 100vh;
   
   .hero-section {
-    position: relative;
+    // position: relative;
     padding: 2rem 1.5rem;
     background: linear-gradient(to bottom, 
       rgba($background-light, 0.05),
       rgba($background-dark, 1)
     );
-    border-bottom: 1px solid rgba($accent-color, 0.1);
+    // border-bottom: 1px solid rgba($accent-color, 0.1);
     
     .hero-content {
       max-width: 800px;
@@ -2219,7 +2223,7 @@ ion-label {
 .landing-page {
   color: $text-color;
   background: $background-dark;
-  min-height: 100vh;
+  height: calc(100% - 56px);
   
   .hero-section {
     position: relative;
@@ -2509,7 +2513,7 @@ ion-label {
 
       &.active {
         background: rgba($secondary-color, 0.1);
-        border-color: $secondary-color;
+        // border-color: $secondary-color;
         color: $secondary-color;
       }
     }

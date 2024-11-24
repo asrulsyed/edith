@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'gaurika.gaurish.xyz',
-  appName: 'Gaurika',
+  appName: 'E.D.I.T.H',
   webDir: 'www'
 };
 

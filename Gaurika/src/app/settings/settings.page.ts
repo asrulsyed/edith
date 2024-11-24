@@ -35,7 +35,7 @@ export class SettingsPage implements OnInit {
   }[] = [];
   selectedModelIndex: number = 0;
 
-  systemPrompt = 'You are a helpful assistant named Gaurika, Made by Gaurish Mehra.. You are much more than a simple llm, the default model is llama3.1-70b, but the user may change it.';
+  systemPrompt = 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.';
 
   isWebGroundingEnabled = false;
   isMultimodalEnabled = false;
@@ -79,7 +79,7 @@ export class SettingsPage implements OnInit {
     this.models = (await this.storage.get('models')) || [];
     this.selectedModelIndex = (await this.storage.get('selectedModelIndex')) || 0;
 
-    this.systemPrompt = (await this.storage.get('systemPrompt')) || 'You are a helpful assistant named Gaurika, Made by Gaurish Mehra.. You are much more than a simple llm, the default model is llama3.1-70b, but the user may change it.';
+    this.systemPrompt = (await this.storage.get('systemPrompt')) || 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.';
 
     this.isWebGroundingEnabled = (await this.storage.get('isWebGroundingEnabled')) || false;
     this.isMultimodalEnabled = (await this.storage.get('isMultimodalEnabled')) || false;

@@ -12,11 +12,6 @@
     </ion-buttons>
     <ion-buttons slot="end">
       <!-- Only show template toggle on templates page -->
-      <ion-button *ngIf="showTemplatesPage" (click)="toggleTemplates()" class="template-toggle"
-        [title]="isTemplateToggleEnabled ? 'Hide Templates' : 'Show Templates'">
-        <!-- Reversed icons -->
-        <ion-icon [name]="isTemplateToggleEnabled ? 'apps-outline' : 'grid'"></ion-icon>
-      </ion-button>
       <ion-button (click)="openSettings()">
         <ion-icon name="settings-outline"></ion-icon>
       </ion-button>
@@ -58,14 +53,14 @@
       <ion-item *ngFor="let session of sessions; let i = index"
         (click)="editingSessionIndex === null && switchSession(i)" [class.active-session]="i === currentSessionIndex"
         [class.editing-session]="editingSessionIndex === i">
-        <ion-icon name="chatbox-outline" class="mr-2"></ion-icon>
+        <ion-icon name="chatbox-outline" class="mr-2" style="margin-right: 8px; color: white;"></ion-icon>
 
         <!-- Title display/edit mode -->
         <ng-container *ngIf="editingSessionIndex !== i">
           {{ session.name }}
           <ion-buttons slot="end">
             <ion-button fill="clear" (click)="startEditingSession(i, $event)">
-              <ion-icon name="create-outline"></ion-icon>
+              <ion-icon name="create-outline" style="color:#22c55e;"></ion-icon>
             </ion-button>
             <ion-button fill="clear" color="danger" (click)="deleteSession(i)">
               <ion-icon name="trash-outline"></ion-icon>
@@ -107,13 +102,11 @@
       <div class="hero-section" [class.minimal]="!isTemplateToggleEnabled" loading="lazy">
         <div class="hero-content" [class.centered]="!isTemplateToggleEnabled">
           <div class="brand-logo">
-            <img src="../../assets/icon/favicon.png" alt="Gaurika Logo" loading="lazy" width="80" height="80"
-              decoding="async">
           </div>
 
           <!-- Simplified title without hover effect -->
           <h1 class="hero-title">
-            <span class="title">Gaurika</span>
+            <span class="title">E.D.I.T.H</span>
           </h1>
           <!-- Separate subtitle for minimal mode -->
           <p class="hero-subtitle" *ngIf="!isTemplateToggleEnabled">
@@ -123,86 +116,6 @@
           <p class="hero-subtitle" *ngIf="isTemplateToggleEnabled">
             Experience the future of AI assistance with precision, creativity, and intelligence
           </p>
-        </div>
-      </div>
-
-      <!-- Primary Actions - Only show in full mode -->
-      <div class="primary-actions" *ngIf="isTemplateToggleEnabled">
-        <div class="quick-start-card" (click)="startQuickChat()">
-          <div class="card-content" [class.minimal]="!isTemplateToggleEnabled">
-            <ion-icon name="rocket-outline" class="primary-icon"></ion-icon>
-            <h2>Start Fresh Chat</h2>
-            <p *ngIf="isTemplateToggleEnabled">Begin a new conversation with no constraints</p>
-          </div>
-          <div class="action-hint" *ngIf="isTemplateToggleEnabled">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-        </div>
-
-        <!-- Only show docs card in full mode -->
-        <div class="docs-card" (click)="openDocumentation()" *ngIf="isTemplateToggleEnabled">
-          <div class="card-content">
-            <ion-icon name="book-outline" class="primary-icon"></ion-icon>
-            <h2>Documentation</h2>
-            <p>Learn how to use Gaurika effectively</p>
-          </div>
-          <div class="action-hint">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-        </div>
-      </div>
-
-      <!-- Templates Section -->
-      <div class="templates-section" *ngIf="isTemplateToggleEnabled">
-        <div class="section-header">
-          <h2>Templates & Starting Points</h2>
-          <p>Choose from our curated collection of conversation starters</p>
-        </div>
-
-        <div class="category-tabs">
-          <button *ngFor="let cat of categories" class="category-tab" [class.active]="selectedCategory === cat.id"
-            (click)="setCategory(cat.id)">
-            <ion-icon [name]="cat.icon"></ion-icon>
-            <span>{{ cat.name }}</span>
-            <div class="category-indicator"></div>
-          </button>
-        </div>
-
-        <div class="templates-grid">
-          <div *ngFor="let template of filteredTemplates; trackBy: trackByTemplateId" class="template-card"
-            [class.featured]="template.category === selectedCategory" (click)="startConversation(template)">
-            <div class="template-icon">
-              <ion-icon [name]="getIconForTemplate(template.name)"></ion-icon>
-            </div>
-            <div class="template-content">
-              <h3>{{ template.name }}</h3>
-              <p class="description">{{ template.description }}</p>
-              <div class="template-tags">
-                <span class="tag category-tag">{{ template.category | titlecase }}</span>
-                <span *ngFor="let tag of template.tags" class="tag">{{ tag }}</span>
-              </div>
-            </div>
-            <div class="template-action">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Replace the existing templates section when in minimal mode -->
-      <div *ngIf="showTemplatesPage && !isTemplateToggleEnabled" class="minimal-mode">
-        <div class="suggestions-grid">
-          <div class="suggestion-card" *ngFor="let suggestion of minimalSuggestions"
-            (click)="handleMinimalSuggestion(suggestion.text)">
-            <ion-icon [name]="suggestion.icon"></ion-icon>
-            <span>{{ suggestion.text }}</span>
-          </div>
-        </div>
-
-        <div class="quick-start">
-          <button class="start-button" (click)="startQuickChat()">
-            Start a New Chat
-          </button>
         </div>
       </div>
     </div>
@@ -216,7 +129,7 @@
             <span class="message-sender">
               <ion-icon [name]="message.role === 'user' ? 'person-circle-outline' : 'desktop-outline'"
                 class="mr-2"></ion-icon>
-              {{ message.role === 'user' ? 'You' : 'Gaurika' }} ->
+              {{ message.role === 'user' ? 'You' : 'E.D.I.T.H' }}
             </span>
 
             <!-- Assistant Message Content -->
@@ -337,7 +250,7 @@
 
         <!-- Writing Indicator -->
         <div class="brand-logo-bottom" [class.spinning]="isStreaming" *ngIf="getFilteredMessages().length > 0">
-          <img src="../../assets/icon/favicon.png" alt="Gaurika Logo">
+          <!-- <img src="../../assets/icon/favicon.png" alt="Gaurika Logo"> -->
         </div>
       </ion-list>
     </div>
@@ -354,7 +267,7 @@
 <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" />
 
 <!-- Bottom Input Bar -->
-<div class="bottom-bar">
+<div [ngClass]="messages.length > 0 ? 'bottom-bar' : ''">
   <div class="bottom-toolbar">
     <ion-textarea #messageInput [(ngModel)]="userInput" placeholder="Send a message..."
       (keydown)="handleKeyDown($event)" (paste)="handlePaste($event, 'user')" [disabled]="isInputDisabled()"

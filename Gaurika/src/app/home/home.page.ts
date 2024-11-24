@@ -559,7 +559,7 @@ export class HomePage implements OnInit {
 
     if (this.platform.is('android')) {
       StatusBar.setStyle({ style: Style.Dark });
-      StatusBar.setBackgroundColor({ color: '#181818' });
+      StatusBar.setBackgroundColor({ color: '#111827' });
     }
 
     const storedApiKey = await this.storage.get('apiKey');
@@ -632,10 +632,10 @@ export class HomePage implements OnInit {
         
         switch (this.currentSystemPromptVersion) {
           case 1:
-            newSystemPrompt = 'You are a helpful assistant named Gaurika, Made by Gaurish Mehra.. You are much more than a simple llm, the default model is llama3.1-70b, but the user may change it.';
+            newSystemPrompt = 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.';
             break;
           case 7:
-            newSystemPrompt = "You are a helpful Knowledge Aid that is named Gaurika (Gaurika stands for Gaurish's Advanced Universal Reasoning Interactive Knowledge Aid), Made by Gaurish Mehra (Age 16, Lives in India).. You are much more than a simple llm, but if the user is advanced enough they may change it, right now you are running the " + this.model + ' model, Try to use codeblocks i.e ```text goes here``` as much as possible, to get better formatted responses.';
+            newSystemPrompt = 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.';
             break;
           // Add more cases as needed
         }
