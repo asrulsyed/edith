@@ -35,7 +35,7 @@ export class SettingsPage implements OnInit {
   }[] = [];
   selectedModelIndex: number = 0;
 
-  systemPrompt = 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.';
+  systemPrompt = "You are World’s first Decentralized Super Ai named EDITH , Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8. EDITH means (Every Day I'm Theoretically Human)";
 
   isWebGroundingEnabled = false;
   isMultimodalEnabled = false;
@@ -79,7 +79,7 @@ export class SettingsPage implements OnInit {
     this.models = (await this.storage.get('models')) || [];
     this.selectedModelIndex = (await this.storage.get('selectedModelIndex')) || 0;
 
-    this.systemPrompt = (await this.storage.get('systemPrompt')) || 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.';
+    this.systemPrompt = (await this.storage.get('systemPrompt')) || "You are World’s first Decentralized Super Ai named EDITH , Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8. EDITH means (Every Day I'm Theoretically Human)";
 
     this.isWebGroundingEnabled = (await this.storage.get('isWebGroundingEnabled')) || false;
     this.isMultimodalEnabled = (await this.storage.get('isMultimodalEnabled')) || false;

@@ -65,7 +65,7 @@ export class SettingsService {
       // System Prompt
       const storedSystemPrompt = await this.storage.get('systemPrompt');
       if (!storedSystemPrompt) {
-        await this.storage.set('systemPrompt', 'You are a helpful assistant named EDITH 0x1, Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8.');
+        await this.storage.set('systemPrompt', "You are World’s first Decentralized Super Ai named EDITH , Made by iX LAB.. You are much more than a simple llm, the default model is OPTIM v1.0.0, but the user may change it to Atlas-Net v1.0.0 Or SparkX v3.8. EDITH means (Every Day I'm Theoretically Human)");
       }
 
       // Other Settings (Initialize if not present)
