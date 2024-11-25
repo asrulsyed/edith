@@ -141,6 +141,7 @@ export class HomePage implements OnInit {
   @ViewChild('pageSubtitle') pageSubtitle!: ElementRef;
   userInput = '';
   messages: Message[] = [];
+  inputBarPosition: 'center' | 'bottom' = 'center';
   client: any;
   isSidebarOpen = false;
   model = 'llama3.1-70b';
@@ -1294,6 +1295,7 @@ export class HomePage implements OnInit {
     this.currentSessionIndex = index;
     this.loadCurrentSession();  // This will now refresh the prompt
     this.toggleSidebar();
+    this.inputBarPosition = 'bottom';
   }
 
 
@@ -1449,6 +1451,7 @@ export class HomePage implements OnInit {
   
 
   async sendMessage(isRedo: boolean = false) {
+    this.inputBarPosition = 'bottom';
     
     if (!this.client) {
       await this.initializeOpenAIClient();
@@ -2108,6 +2111,7 @@ async copyCode(code: string) {
 }
 
   showTemplatesAndRefresh() {
+    this.inputBarPosition = 'center'
     this.showTemplatesPage = true;
     // Restore the previous template toggle state instead of forcing it true
     this.storage.get('templateToggleEnabled').then(savedState => {
