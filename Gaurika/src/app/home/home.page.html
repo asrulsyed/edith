@@ -135,7 +135,7 @@
             <!-- Assistant Message Content -->
             <div *ngIf="message.role === 'assistant'" class="message-content">
               <ng-container *ngIf="!message.content.includes('```')">
-                <div [innerHTML]="renderMarkdown(message.content)"></div>
+                <div [innerHTML]="renderMarkdown(message.content)" style="color: white;"></div>
               </ng-container>
               <ng-container *ngIf="message.content.includes('```')">
                 <ng-container *ngFor="let part of splitMessageContent(message.content)">
@@ -191,7 +191,7 @@
 
               <!-- Display mode -->
               <div *ngIf="editingUserMessageIndex !== i">
-                <div [innerHTML]="renderMarkdown(getDisplayContent(message.content))"></div>
+                <div [innerHTML]="renderMarkdown(getDisplayContent(message.content))" style="color: white;"></div>
                 <!-- Add this section to display user images -->
                 <div *ngIf="message.image" class="user-image-container">
                   <img [src]="message.image" class="user-sent-image" alt="User sent image"
