@@ -1,10 +1,16 @@
 // Native-Inspired Dark Color Palette with Enhanced Aesthetics (Mature)
-$background-dark: #111827; 
-$background-light: #1f2937;
+$background: #000000; 
+$background-dark: #0a0a0a;
+$background-light: #1f1f1f;
+$border-color: #ffffff24;
 $primary-color: #646cff; 
-$secondary-color: #646cff; 
+$secondary-color: #ededed; 
 $accent-color: #b0b0b0; 
-$text-color: #f8f8f8; 
+$text-color: #a1a1a1;
+$text-light: #ededed;
+$button-color: #ededed;
+$button-hover: #a1a1a1;
+$button-text: #0a0a0a;
 $muted-text: #d8d8d8; 
 $card-background: rgba(255, 255, 255, 0.08); 
 $success-color: #34785f; 
@@ -52,11 +58,12 @@ $text-sizes: (
 
 // Mixins
 @mixin text-gradient {
-  background: linear-gradient(135deg, 
-    $secondary-color,
-    adjust-color($secondary-color, $lightness: 15%),
-    $primary-color
-  );
+  // background: linear-gradient(135deg, 
+  //   $secondary-color,
+  //   adjust-color($secondary-color, $lightness: 15%),
+  //   $primary-color
+  // );
+  background: $text-light;
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -81,7 +88,7 @@ $text-sizes: (
 body {
   font-family: $font-family;
   color: $text-color;
-  background: linear-gradient(135deg, $background-dark, adjust-color($background-dark, $lightness: 2%));
+  background: $background;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -94,7 +101,7 @@ body {
 }
 
 ion-content {
-  --ion-background-color: #{$background-dark};
+  --ion-background-color: #{$background};
   overflow-x: hidden;
 }
 
@@ -105,6 +112,8 @@ ion-header {
   z-index: 2000;
   background-color: $background-dark;
   --background: #{$background-dark};
+  border-bottom: 1px solid $border-color;
+  box-sizing: content-box;
 
   ion-toolbar {
     background-color: $background-dark;
@@ -159,7 +168,7 @@ ion-header {
   max-width: 800px;  // Keep max-width for larger screens
   @include rounded-corners(15px);
   @include glass-effect(15px, 0.15); 
-  background-color: rgba($background-light, 0.8); 
+  background-color: rgba($background-dark, 0.8); 
   padding: 10px;
   z-index: 1000;
   margin: 0 auto; // Added to help with centering
@@ -718,7 +727,7 @@ pre {
       color: white;
 
       &.active-session {
-        --background: #0f223d;
+        --background: #3f3f3f;
         border-left: 3px solid $secondary-color;
         
         ion-label {
@@ -774,7 +783,7 @@ pre {
       &:hover {
         transform: scale(1.02);
         cursor: pointer;
-        background: rgba($background-light, 0.2);
+        background: $background-light;
       }
     }
   }
@@ -790,18 +799,20 @@ pre {
 
     ion-button {
       margin-bottom: 10px;
-      --background: #{$secondary-color};
-      --color: #{$text-color};
+      --background: #{$button-color};
+      --color: #{$button-color};
       --border-radius: 10px;
       height: 44px;
       font-weight: 500;
 
       &:last-child {
-        --background: #{$primary-color};
+        --background: #{$button-color};
+        --color: #{$button-text};
       }
     }
     ion-button:hover{
       transform: scale(1.05);
+      --background: #{$button-hover};
       cursor: pointer;
     }
   }
@@ -1080,8 +1091,6 @@ ion-buttons {
 // Templates/Landing Page Styles
 .landing-page {
   color: $text-color;
-  background-color: $background-dark;
-  // min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -1113,13 +1122,7 @@ ion-buttons {
 }
 
 .hero-section {
-  height: calc(100vh - 56px);
   padding: 3rem 2rem;
-  background: linear-gradient(
-    135deg,
-    rgba($secondary-color, 0.7) 0%,
-    rgba($primary-color, 0.7) 100%
-  );
   background-size: 200% 200%;
   animation: gradientAnimation 15s ease-in-out infinite;
   will-change: background-position;
@@ -1129,7 +1132,7 @@ ion-buttons {
   .hero-content {
     max-width: 800px;
     margin: 0 auto;
-    background-color: rgba($background-dark, 0.5);
+    background-color: $background-dark;
     padding: 30px 0;
     @include rounded-corners(25px);
     transform: translateZ(0);
@@ -1595,7 +1598,7 @@ ion-item {
 
     &.user-message {
       // background: linear-gradient(135deg, rgba($primary-color, 0.3), rgba($primary-color, 0.2));
-      background: $background-light;
+      background: $background-dark;
       .user-butt {
         position: absolute;
         top: 5px; /* Adjust as needed */
@@ -1624,10 +1627,10 @@ ion-item {
     }
 
     &.assistant-message {
-      color: $text-color;
+      color: $text-light;
       // background: linear-gradient(135deg, rgba($secondary-color, 0.3), rgba($secondary-color, 0.2));
       
-      background: rgba($primary-color, 0.2);
+      background: $background-light;
       .ass-butt {
         position: absolute;
         top: 5px; /* Adjust as needed */
@@ -1918,6 +1921,7 @@ ion-label {
   cursor: pointer;
   
   .title {
+    color: $text-light;
     display: block;
     font-size: 3rem;
     font-weight: 700;
@@ -2015,22 +2019,18 @@ ion-label {
 // Landing Page Styles
 .landing-page {
   color: $text-color;
-  background: $background-dark;
+  background: $background;
   // min-height: 100vh;
   
   .hero-section {
-    // position: relative;
     padding: 2rem 1.5rem;
-    background: linear-gradient(to bottom, 
-      rgba($background-light, 0.05),
-      rgba($background-dark, 1)
-    );
-    // border-bottom: 1px solid rgba($accent-color, 0.1);
     
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
+      background: $background-dark;
+      border: 1px solid $border-color; 
       
       .brand-logo {
         margin-bottom: 1.5rem;
@@ -2223,18 +2223,11 @@ ion-label {
 // Updated Landing Page Styles
 .landing-page {
   color: $text-color;
-  background: $background-dark;
-  height: calc(100% - 56px);
+  background: $background;
   
   .hero-section {
     position: relative;
     padding: 3rem 2rem;
-    background: linear-gradient(
-      165deg,
-      rgba($secondary-color, 0.08) 0%,
-      rgba($background-dark, 1) 100%
-    );
-    border-bottom: 1px solid rgba($accent-color, 0.1);
     
     .hero-content {
       max-width: 800px;

@@ -10,12 +10,7 @@
         <ion-label *ngIf="showTemplatesPage"></ion-label>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <!-- Only show template toggle on templates page -->
-      <ion-button (click)="openSettings()">
-        <ion-icon name="settings-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    
   </ion-toolbar>
 
   <!-- Right Sidebar -->
@@ -135,7 +130,7 @@
             <!-- Assistant Message Content -->
             <div *ngIf="message.role === 'assistant'" class="message-content">
               <ng-container *ngIf="!message.content.includes('```')">
-                <div [innerHTML]="renderMarkdown(message.content)" style="color: white;"></div>
+                <div [innerHTML]="renderMarkdown(message.content)"></div>
               </ng-container>
               <ng-container *ngIf="message.content.includes('```')">
                 <ng-container *ngFor="let part of splitMessageContent(message.content)">

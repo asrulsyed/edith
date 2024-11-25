@@ -16,7 +16,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'settings',
+    path: 'admin',
     component: SettingsPage // Use SettingsPage component directly
   },
   {
