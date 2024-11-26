@@ -1,12 +1,14 @@
 // Variables
 $primary-pink: #646cff; 
 $secondary-pink: #cf3182;
-$background-color: #111827;
+$background-color: #000000;
+$background-dark: #0a0a0a;
 $text-color: #ffffff;
 $input-background: #1f2937;
 $divider-color: #1f2937;
 $border-radius: 16px;
 $item-padding: 16px;
+$border-color: #ffffff24;
 
 // Mixins
 @mixin smooth-transition($property: all, $duration: 0.2s) {
@@ -29,8 +31,9 @@ ion-content {
 }
 
 ion-header ion-toolbar {
-  --background: #{$background-color};
+  --background: #{$background-dark};
   --color: #{$text-color};
+  --border-bottom: 1px solid #{$border-color};
 
   ion-title {
     font-size: 20px;
@@ -46,7 +49,7 @@ ion-list {
 
   ion-item-group {
     margin-bottom: 20px;
-    background-color: $input-background;
+    background-color: $background-dark;
     border-radius: $border-radius;
     overflow: hidden;
 
