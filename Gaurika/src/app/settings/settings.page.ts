@@ -19,6 +19,20 @@ import { environment } from 'src/environments/environment';
 })
 export class SettingsPage implements OnInit {
 
+  isAuthenticated = false;
+  adminCredentials = {
+    username: '',
+    password: ''
+  };
+
+  async onAdminLogin() {
+    if (this.adminCredentials.username === environment.ADMIN_USERNAME && this.adminCredentials.password === environment.ADMIN_PASSWORD) {
+      this.isAuthenticated = true;
+    } else {
+      console.error('Invalid credentials')
+    }
+  }
+
 
   apiKeys: { name: string; key: string }[] = [];
   selectedApiKeyIndex: number = 0;

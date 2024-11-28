@@ -1,14 +1,36 @@
-<ion-header>
+<ion-header class="setting-header">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Settings</ion-title>
+    <ion-title>Admin</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <!-- Login Form -->
+  <div class="admin-form" *ngIf="!isAuthenticated">
+    <form (ngSubmit)="onAdminLogin()" #loginForm="ngForm">
+      <ion-list class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input type="text" [(ngModel)]="adminCredentials.username" name="username" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="adminCredentials.password" name="password" required></ion-input>
+        </ion-item>
+
+        <div class="ion-padding">
+          <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+
+  <!-- Admin Panel   -->
+  <ion-list *ngIf="isAuthenticated" class="admin-panel">
     <ion-item-group>
       <ion-item-divider>
         <ion-label>Features - Unstable [DOES NOT WORK WITH MULTIMODAL MODELS]</ion-label>
@@ -23,14 +45,11 @@
         <ion-label>Enable Personalized Learning</ion-label>
         <ion-toggle [(ngModel)]="isLearning" (ionChange)="onPersonalizedLearningToggleChange()"></ion-toggle>
       </ion-item>
-    
+
       <ion-item *ngIf="isLearning">
         <ion-label position="stacked">Learned User Information</ion-label>
-        <ion-textarea 
-          [(ngModel)]="learnedUserInfo" 
-          rows="4"
-          placeholder="Enter or modify learned information..."
-        ></ion-textarea>
+        <ion-textarea [(ngModel)]="learnedUserInfo" rows="4"
+          placeholder="Enter or modify learned information..."></ion-textarea>
         <ion-note color="medium" class="ion-padding-top">
           Warning: Manually editing this information may affect the AI's understanding of your preferences.
         </ion-note>
@@ -131,10 +150,12 @@
             <ion-button fill="clear" (click)="showAddApiProviderModal()">
               <ion-icon name="add-outline"></ion-icon>
             </ion-button>
-            <ion-button fill="clear" (click)="editApiProvider(selectedApiProviderIndex)" *ngIf="apiProviders.length > 0">
+            <ion-button fill="clear" (click)="editApiProvider(selectedApiProviderIndex)"
+              *ngIf="apiProviders.length > 0">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
-            <ion-button fill="clear" (click)="removeApiProvider(selectedApiProviderIndex)" *ngIf="apiProviders.length > 0">
+            <ion-button fill="clear" (click)="removeApiProvider(selectedApiProviderIndex)"
+              *ngIf="apiProviders.length > 0">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </ion-buttons>

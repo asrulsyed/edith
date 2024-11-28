@@ -4,12 +4,14 @@ $secondary-pink: #cf3182;
 $background-color: #000000;
 $background-dark: #0a0a0a;
 $text-color: #ffffff;
-$input-background: #1f2937;
+$input-background: #000000;
 $divider-color: #1f2937;
 $border-radius: 16px;
 $item-padding: 16px;
-$border-color: #ffffff24;
-
+$border-color: rgba(255, 255, 255, 0.14);
+$button-color: #ededed;
+$button-hover: #a1a1a1;
+$button-text: #0a0a0a;
 // Mixins
 @mixin smooth-transition($property: all, $duration: 0.2s) {
   transition: $property $duration ease;
@@ -20,6 +22,46 @@ body {
   background-color: $background-color;
   color: $text-color;
   font-family: 'SF Pro Text', 'Roboto', sans-serif;
+}
+
+.admin-form {
+  max-width: 400px;
+  margin: 4rem auto;
+  background-color: $background-dark;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  color: $text-color;
+  padding: 2rem;
+  padding-top: 4rem;
+
+  ion-list {
+    background: transparent;
+    color: $text-color;
+    ion-item {
+      --background: transparent;
+      margin-bottom: 1rem;
+      color: $text-color;
+      border: 1px solid $border-color;
+        border-radius: $border-radius;
+        background-color: $input-background;
+    }
+
+    ion-button {
+      background-color: $button-color;
+      color: $button-text;
+      border-radius: $border-radius;
+      &:hover {
+        background-color: $button-hover;
+      }
+    }
+  }
+
+}
+
+.admin-panel {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $background-dark;
 }
 
 ion-content {
@@ -33,7 +75,6 @@ ion-content {
 ion-header ion-toolbar {
   --background: #{$background-dark};
   --color: #{$text-color};
-  --border-bottom: 1px solid #{$border-color};
 
   ion-title {
     font-size: 20px;
@@ -126,7 +167,7 @@ ion-list {
       }
 
       &:hover {
-        --background: #{lighten($input-background, 3%)};
+        --background: #{$button-hover};
       }
     }
   }
@@ -171,9 +212,9 @@ ion-item[button] {
 
 // Button Styles
 ion-button {
-  --background: #{$primary-pink};
-  --background-hover: #{$secondary-pink};
-  --color: #{$text-color};
+  --background: #{$button-color};
+  --background-hover: #{$button-hover};
+  --color: #{$button-text};
   --border-radius: 12px;
   --padding-top: 0;
   --padding-bottom: 0;

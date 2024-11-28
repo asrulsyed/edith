@@ -13,13 +13,12 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app',
   templateUrl: './app.page.html',
   styleUrls: ['./app.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule, CommonModule],
+  imports: [IonicModule, FormsModule, CommonModule]
 })
 export class AppPage  implements OnInit {
 
