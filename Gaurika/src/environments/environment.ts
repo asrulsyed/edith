@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   API_KEY: 'csk-242evhm943wpr5xj23rk8k4cj8xddmjjm6tv4epr8rxkmyp4',
   BASE_URL: 'https://api.cerebras.ai/v1/',
-  ADMIN_USERNAME: 'Admin',
-  ADMIN_PASSWORD: 'XLab@@19281928'
+  ADMIN_USERNAME: '',
+  ADMIN_PASSWORD: ''
 };
 
 /*

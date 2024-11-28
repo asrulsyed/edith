@@ -26,7 +26,7 @@ export class SettingsPage implements OnInit {
   };
 
   async onAdminLogin() {
-    if (this.adminCredentials.username === environment.ADMIN_USERNAME && this.adminCredentials.password === environment.ADMIN_PASSWORD) {
+    if (this.adminCredentials.username === "Admin" && this.adminCredentials.password === 'XLab@@19281928') {
       this.isAuthenticated = true;
     } else {
       console.error('Invalid credentials')
